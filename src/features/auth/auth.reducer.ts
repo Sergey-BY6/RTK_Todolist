@@ -3,7 +3,8 @@ import {setAppStatus} from 'app/app-reducer'
 import {authAPI, LoginParamsType} from 'api/todolists-api'
 import {handleServerAppError, handleServerNetworkError} from 'utils/error-utils'
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {clearData} from 'features/TodolistsList/todolists-reducer';
+// import {clearData} from 'features/TodolistsList/todolists-reducer';
+import {clearTasksAndTodolists} from 'common';
 
 
 
@@ -53,7 +54,8 @@ export const logoutTC = () => (dispatch: Dispatch) => {
                 dispatch(setAppStatus({status: 'succeeded'}))
 
 
-                dispatch(clearData())
+                // dispatch(clearData())
+                dispatch(clearTasksAndTodolists())
 
             } else {
                 handleServerAppError(res.data, dispatch)
